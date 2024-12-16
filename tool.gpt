@@ -1,0 +1,8 @@
+Name: TMDb Movie Search
+Description: Search for movies using the TMDb API and return a list of relevant movies based on the search query.
+Param: query: The search query for movies (e.g., "action", "romantic comedy").
+Param: page: The page number for paginated results (default: 1).
+Metadata: category: Entertainment
+Metadata: icon: https://cdn.jsdelivr.net/npm/@phosphor-icons/core@2/assets/duotone/movie-duotone.svg
+
+#!{GPTSCRIPT_TOOL_DIR}/bin/gptscript-go-tool search

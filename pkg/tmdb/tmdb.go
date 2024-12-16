@@ -28,17 +28,20 @@ func (c *TMDbClient) SearchMovies(query string) ([]Movie, error) {
 	params.Add("api_key", c.APIKey)
 	params.Add("query", query)
 
+	// Create the request with a context (optional, useful for cancellation)
 	response, err := http.Get(fmt.Sprintf("%s?%s", endpoint, params.Encode()))
 	if err != nil {
 		return nil, fmt.Errorf("error fetching data: %v", err)
 	}
 	defer response.Body.Close()
 
+	// Read and process the response
 	body, err := ioutil.ReadAll(response.Body)
 	if err != nil {
 		return nil, fmt.Errorf("error reading response: %v", err)
 	}
 
+	// Parse the response JSON
 	var result struct {
 		Results []Movie `json:"results"`
 	}
@@ -46,5 +49,6 @@ func (c *TMDbClient) SearchMovies(query string) ([]Movie, error) {
 		return nil, fmt.Errorf("error parsing JSON: %v", err)
 	}
 
+	// Return the results
 	return result.Results, nil
 }
