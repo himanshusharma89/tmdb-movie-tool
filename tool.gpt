@@ -1,8 +1,6 @@
-Name: TMDb Movie Search
-Description: Search for movies using the TMDb API and return a list of relevant movies based on the search query.
-Param: query: The search query for movies (e.g., "action", "romantic comedy").
-Param: page: The page number for paginated results (default: 1).
-Metadata: category: Entertainment
-Metadata: icon: https://cdn.jsdelivr.net/npm/@phosphor-icons/core@2/assets/duotone/movie-duotone.svg
+Name: MoviePlanner
+Description: Plan a movie night based on search key and movie duration.
+Param: searchKey: The keyword or genre for searching movies (e.g., "Action", "Comedy").
+Param: duration: The preferred total duration for the movie night.
 
-#!{GPTSCRIPT_TOOL_DIR}/bin/gptscript-go-tool search
+#!/usr/bin/env npm --silent --prefix ${GPTSCRIPT_TOOL_DIR} run tool -- plan-movie

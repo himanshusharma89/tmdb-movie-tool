@@ -1,1 +1,0 @@
-# otto8-tmdb-tool
