@@ -1,6 +1,14 @@
-Name: MoviePlanner
-Description: Plan a movie night based on search key and movie duration.
-Param: searchKey: The keyword or genre for searching movies (e.g., "Action", "Comedy").
-Param: duration: The preferred total duration for the movie night.
+---
+Name: MovieRecommender
+Description: Recommend top-rated movies based on any search query.
+Param: query: The search term or keyword for movie recommendations (e.g., "Action", "Comedy", "Sci-Fi").
 
-#!/usr/bin/env npm --silent --prefix ${GPTSCRIPT_TOOL_DIR} run tool -- plan-movie
+#!/usr/bin/env npm --silent --prefix ${GPTSCRIPT_TOOL_DIR} run tool -- recommend-movie
+
+---
+!metadata:*:category
+Entertainment
+
+---
+!metadata:*:icon
+https://cdn.jsdelivr.net/npm/@phosphor-icons/core@2/assets/duotone/fingerprint-duotone.svg
