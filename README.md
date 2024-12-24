@@ -59,87 +59,59 @@ Before you begin, make sure you have the following:
 
 ---
 
-## Usage
-
-1. Validate the Tool locally using the GPTScript CLI:
-    ```bash
-    QUERY='Action' gptscript tool.gpt
-    ```
-
-    Expected output(JSON):
-    ```json
-    {
-    "query": "Comedy",
-    "topMovies": [
-        {
-        "adult": false,
-        "backdrop_path": "/npoUm3stzUM2lR46ClLDwBZDaeZ.jpg",
-        "genre_ids": [
-            18,
-            35
-        ],
-        "id": 262,
-        "original_language": "en",
-        "original_title": "The King of Comedy",
-        "overview": "Aspiring comic Rupert Pupkin attempts to achieve success in show business by stalking his idol, a late night talk-show host who craves his own privacy.",
-        "popularity": 34.538,
-        "poster_path": "/3BM78deUfeZfShqPTblZuamgC8a.jpg",
-        "release_date": "1982-12-18",
-        "title": "The King of Comedy",
-        "video": false,
-        "vote_average": 7.8,
-        "vote_count": 2287
-        },
-        {
-        "adult": false,
-        "backdrop_path": "/twqghSexhGFScDUsnBnXChSwoXw.jpg",
-        "genre_ids": [
-            18
-        ],
-        "id": 1212560,
-        "original_language": "ja",
-        "original_title": "笑いのカイブツ",
-        "overview": "Tsuchiya, who lives with his single mother in Osaka, does not get serious work once he graduates from high school, but rather devotes himself to mailing jokes to the "Ohgiri" variety show. Seeking to be recognized as a show "Legend," he devotes his entire life to laughter, setting himself the task of submitting hundreds of entries per day. At loose ends, he encounters a drifter, Pink, who finds him work at his bar while Tsuchiya now devotes himself to becoming a "postcard craftsman" who submits material to a radio program. The entertainers on the program begin to use material from his postcards. A comedian Tsuchiya admires, one of a comic duo called "Bacon," says on the air that he admires Tsuchiya's material and that he wants "to do material together." Dreaming of another chance, Tsuchiya heads for Tokyo.",
-        "popularity": 5.578,
-        "poster_path": "/7d9vVMfob5llYxhwadS7OvFfIzq.jpg",
-        "release_date": "2024-01-05",
-        "title": "The Beast of Comedy",
-        "video": false,
-        "vote_average": 7.5,
-        "vote_count": 2
-        },
-        …
-    ]
-    }
-    ```
-2.  Run the Tool Directly (Alternate):
-    ```bash
-    QUERY='Horro' npm run tool recommend-movie
-    ```
-3. Explanation of Commands
-    - `QUERY`: Specify the movie search term (e.g., "Comedy", "Action", "Sci-Fi")
-    - `recommend-movie`: Executes the logic to fetch and filter movies from TMDb
-
----
-
 ## Defining the Tool with GPTScript
 The tool.gpt file describes the tool's functionality, parameters, and execution steps.
 
 ```yaml
+---
 Name: MovieRecommender
-Description: Recommend top-rated movies based on any search query.
-Param: query: The search term or keyword for movie recommendations (e.g., "Action", "Comedy", "Sci-Fi").
+Description: An intelligent agent that recommends top-rated movies based on user sentiment or search queries.
+Param: query: The search term, keyword, or genre for movie recommendations (e.g., "Action", "Comedy", "Sci-Fi").
+
+You are a smart and fun movie recommendation agent. Follow these steps:
+
+1. Start with a friendly question: "How are you feeling today? Any specific mood or vibe you're going for?"
+2. Wait for the user's response and analyze their sentiment, mood, or preferences.
+3. Use this analysis to determine the most suitable movie genre or actor (e.g., "Action", "Adventure", "Angelina Jolie").
+4. Respond casually: "Based on your mood, I think you'd enjoy some {genre} movies! Let me fetch those for you."
+5. Pass the determined `query` parameter to the `fetch-movies` tool and retrieve the movie data.
+6. Wait for the results from `fetch-movies` to return.
+7. Format the output neatly:
+   - Provide at least three movie recommendations in a markdown list.
+   - Include titles, ratings, and release years.
+   - Optionally, add a short comment or fun trivia about each movie.
+8. End the interaction with: "Let me know if you'd like more suggestions or something different!"
+9. Ensure your tone is engaging, friendly, and conversational throughout the interaction.
+
+---
+
+Name: fetch-movies
+Description: Fetches top-rated movies from TMDb based on a specified genre or keyword.
+Param: genre: The movie genre or keyword to fetch (e.g., "Action", "Romance", "Sci-Fi").
+
+You are tasked with fetching and formatting movie data. Follow these steps:
+
+1. Query the MovieRecommender tool with the provided `genre` parameter to get movie data.
+2. Filter the results to include:
+   - Titles, ratings, and release years.
+   - A maximum of 10 movies, sorted by rating in descending order.
+3. Format the results into a markdown list:
+   - Use bullet points for each movie.
+   - Include the title, rating, and release year.
+   - Add optional trivia or a short comment for a better user experience.
+4. Return the markdown list for display.
 
 #!/usr/bin/env npm --silent --prefix ${GPTSCRIPT_TOOL_DIR} run tool -- recommend-movie
 
 ---
+
 !metadata:*:category
 Entertainment
 
 ---
+
 !metadata:*:icon
 https://cdn.jsdelivr.net/npm/@phosphor-icons/core@2/assets/duotone/film-slate-duotone.svg
-
 ```
 
 ---
