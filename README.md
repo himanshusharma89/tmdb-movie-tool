@@ -63,8 +63,9 @@ Before you begin, make sure you have the following:
 The tool.gpt file describes the tool's functionality, parameters, and execution steps.
 
 ```yaml
----
 Name: MovieRecommender
+Chat: true
+Tools: fetch-movies
 Description: An intelligent agent that recommends top-rated movies based on user sentiment or search queries.
 Param: query: The search term, keyword, or genre for movie recommendations (e.g., "Action", "Comedy", "Sci-Fi").
 
