@@ -1,4 +1,5 @@
 Name: MovieRecommender
+Chat: true
 Description: Fetches top-rated movies from TMDb based on a specified genre or keyword.
 Param: query: The movie genre or keyword to fetch (e.g., "Action", "Romance", "Sci-Fi").
 
