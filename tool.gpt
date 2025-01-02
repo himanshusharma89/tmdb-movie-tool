@@ -49,18 +49,21 @@ You are tasked with fetching and formatting movie data. Follow these steps:
 Name: fetch-snacks
 Description: Fetches snack recommendations tailored to the movie genre.
 Param: genre: The movie genre (e.g., "Action", "Romance").
+Command: node ./snackTool.js --genre "$genre"
 
 ---
 
 Name: fetch-news
 Description: Fetches trending entertainment news for a specified region.
 Param: region: The region for news trends (e.g., "us", "uk").
+Command: node ./newsTool.js --region "$region"
 
 ---
 
 Name: fetch-streaming
 Description: Fetches streaming links for a list of movies.
 Param: movies: A list of movie titles.
+Command: node ./streamingTool.js --movies "$movies"
 
 ---
 
