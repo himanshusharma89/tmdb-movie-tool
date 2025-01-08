@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "tool": "node --no-warnings src/movieTool.js",
+    "tool": "node --no-warnings src/tool.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
