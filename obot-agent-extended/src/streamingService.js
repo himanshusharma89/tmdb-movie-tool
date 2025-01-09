@@ -8,10 +8,9 @@ export async function getStreamingLinks(movieId, region) {
         Authorization: `Bearer ${process.env.TMDB_API_TOKEN}`,
       },
     });
-    const providers = response.data.results[region.toUpperCase()]?.buy || [];
-    const links = providers.map((provider) => provider.provider_name).join(', ');
+    const link = response.data.results[region.toUpperCase()]?.link || "";
 
-    return { movieId, links: links || 'No streaming providers available.' };
+    return { movieId, links: link || 'No streaming providers available.' };
   } catch (error) {
     console.error(`Error fetching streaming links for movie ID ${movieId}: ${error.message}`);
     return { movieId, links: 'Error fetching streaming links.' };
