@@ -1,0 +1,10 @@
+tools:
+  gptscript:
+    reference: ./gptscript
+    all: true
+  obot-agent:
+    reference: ./obot-agent
+    all: true
+  obot-agent-extended:
+    reference: ./obot-agent-extended
+    all: true
