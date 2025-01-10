@@ -17,7 +17,8 @@ try {
   switch (cmd) {
     case 'recommend-movie':
       const language = process.env.LANGUAGE || 'en-US'; // Default to English (US)
-      const movies = await discoverMovies(region, language, genre);
+      const genre_id = process.env.GENRE_ID || '12'
+      const movies = await discoverMovies(region, language, genre_id);
       console.log(JSON.stringify(movies)); // Log movie result for the agent
       break;
     case 'fetch-snacks':

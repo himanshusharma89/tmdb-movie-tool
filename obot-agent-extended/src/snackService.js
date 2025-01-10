@@ -1,7 +1,17 @@
 import axios from 'axios';
 
 export async function getSnackRecommendations(genre) {
-  const snackQuery = genre === 'Action' ? 'spicy snacks' : 'popcorn';
+  // Define queries based on genre
+  const snackQueryMap = {
+    Action: 'spicy snacks',
+    Comedy: 'sweet snacks',
+    Horror: 'chocolate treats',
+    Romance: 'romantic desserts',
+    Adventure: 'trail mix',
+  };
+
+  const snackQuery = snackQueryMap[genre] || 'popcorn';
+
   const url = `https://api.spoonacular.com/food/menuItems/search?query=${snackQuery}&apiKey=${process.env.SPOONACULAR_API_KEY}`;
   
   try {

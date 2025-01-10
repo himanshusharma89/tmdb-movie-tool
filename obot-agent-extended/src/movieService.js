@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-export async function discoverMovies(region, language, genre = '', sortBy = 'popularity.desc') {
-  const url = `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.TMDB_API_KEY}&region=${region}&language=${language}&sort_by=${sortBy}&with_genres=${genre}`;
+export async function discoverMovies(region, language, genre_id, sortBy = 'popularity.desc') {
+  const url = `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.TMDB_API_KEY}&region=${region}&language=${language}&sort_by=${sortBy}&with_genres=${genre_id}`;
 
   try {
     const response = await axios.get(url);
