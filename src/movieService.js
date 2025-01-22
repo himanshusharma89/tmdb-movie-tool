@@ -15,8 +15,6 @@ export async function getTopRatedMovies(query) {
 }
 
 async function fetchMoviesFromTMDb(query) {
-  console.log(query)
-  console.log(encodeURIComponent(query))
   const url = `https://api.themoviedb.org/3/search/movie?api_key=${process.env.TMDB_API_KEY}&query=${encodeURIComponent(query)}`;
   const response = await axios.get(url);
   return response.data.results || [];
