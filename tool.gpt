@@ -1,18 +1,6 @@
-Name: MovieRecommender
+Name: fetch-movies
 Description: Fetches top-rated movies from TMDb based on a specified genre or keyword.
-Param: query: The movie genre or keyword to fetch (e.g., "Action", "Romance", "Sci-Fi").
-
-You are tasked with fetching and formatting movie data. Follow these steps:
-
-1. Use the provided `query` parameter to query the TMDb API and fetch movie data.
-2. Filter the results:
-   - Include titles, ratings, and release years.
-   - Select a maximum of 10 movies, sorted by rating in descending order.
-3. Format the results into a markdown list:
-   - Use bullet points for each movie.
-   - Include the title, rating, and release year.
-   - Optionally, add trivia or a short comment for user engagement.
-4. Return the formatted markdown list for display.
+Param: genre: The movie genre or keyword to fetch (e.g., "Action", "Romance", "Sci-Fi").
 
 #!/usr/bin/env npm --silent --prefix ${GPTSCRIPT_TOOL_DIR} run tool -- recommend-movie
 
