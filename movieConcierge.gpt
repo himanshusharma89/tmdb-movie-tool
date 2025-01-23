@@ -1,4 +1,4 @@
-Name: MovieRecommender
+Name: movie-concierge
 Chat: true
 Tools: ./tool.gpt as fetch-movies
 Description: An intelligent agent that recommends top-rated movies based on user sentiment or search queries.
